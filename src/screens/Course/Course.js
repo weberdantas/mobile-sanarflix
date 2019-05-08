@@ -53,19 +53,6 @@ class Course extends Component {
 
     }
 
-    /* moduleCheck = item => {
-        const { listModules, checked } = this.state;
-
-        const results = listModules.map(e => {
-            if (item === e.id && checked === true) {
-                return <Icon type='MaterialIcons' name='check' size={20} iconStyle={styles.iconCheck} />
-            } else {
-                return <View />
-            }
-        });
-        return results;
-    } */
-
     render() {
 
         const { listModules, visible, checked, selectedContent, itemId } = this.state;
@@ -85,7 +72,7 @@ class Course extends Component {
                             renderItem={({ item }) =>
                                 <TouchableOpacity
                                     activeOpacity={0.5}
-                                    onPress={() => this.setState({ visible: true, selectedContent: item.conteudos })}
+                                    onPress={() => this.setState({ visible: true, checked: true, itemId: item.id, selectedContent: item.conteudos })}
                                     onLongPress={() =>
                                         Alert.alert(
                                             strings.warning,
@@ -98,7 +85,6 @@ class Course extends Component {
                                     <View style={styles.moduleContainer}>
                                         <Text style={styles.moduleText}>{item.nome}</Text>
                                         {checked === true && itemId === item.id ? <Icon type='MaterialIcons' name='check' size={20} iconStyle={styles.iconCheck} /> : <View />}
-                                        {/* {this.moduleCheck(item.id)} */}
                                     </View>
                                 </TouchableOpacity>
                             }
